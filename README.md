@@ -1,5 +1,17 @@
-# VL53L1X
-Arduino library to support the VL53L1X Time-of-Flight and gesture-detection sensor
+# Adafruit VL53L1X Library [![Build Status](https://travis-ci.com/adafruit/Adafruit_VL53L1X.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_VL53L1X)
+
+<img src="https://cdn-shop.adafruit.com/970x728/3967-00.jpg" height="300"/>
+
+This is a library for the Adafruit VL53L1X time-of-flight breakout:
+  * https://www.adafruit.com/products/3967
+ 
+Check out the links above for our tutorials and wiring diagrams. This chip uses I2C to communicate
+
+Adafruit invests time and resources providing this open source code, please support Adafruit and open-source hardware by purchasing products from Adafruit!
+
+Written by Limor Fried/Ladyada for Adafruit Industries.
+Uses ST's VL53L1X underlying api implementation
+BSD license, all text above must be included in any redistribution
 
 ## API
 
