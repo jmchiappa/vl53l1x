@@ -31,18 +31,19 @@
 
 #include "Adafruit_VL53L1X.h"
 
-
-Adafruit_VL53L1X::Adafruit_VL53L1X(uint8_t shutdown_pin, uint8_t irq_pin) 
-  : VL53L1X(NULL, irq_pin) {
+Adafruit_VL53L1X::Adafruit_VL53L1X(uint8_t shutdown_pin, uint8_t irq_pin)
+    : VL53L1X(NULL, irq_pin) {
   _shutdown_pin = shutdown_pin;
   _irq_pin = irq_pin;
 }
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  Setups the I2C interface and hardware
-    @param  i2c_addr Optional I2C address the sensor can be found on. Default is 0x29
-    @param debug Optional debug flag. If true, debug information will print out via Serial.print during setup. Defaults to false.
+    @param  i2c_addr Optional I2C address the sensor can be found on. Default is
+   0x29
+    @param debug Optional debug flag. If true, debug information will print out
+   via Serial.print during setup. Defaults to false.
     @returns True if device is set up, false on any failure
 */
 /**************************************************************************/
@@ -78,12 +79,12 @@ bool Adafruit_VL53L1X::begin(uint8_t i2c_addr, TwoWire *theWire, bool debug) {
   Status = VL53L1_WaitDeviceBooted(pMyDevice);
   if (Status != VL53L1_ERROR_NONE) return false;
 
-  if (debug) 
+  if (debug)
     Serial.println("DataInit");
   Status = VL53L1_DataInit(pMyDevice);         // Data initialization
   if (Status != VL53L1_ERROR_NONE) return false;
 
-  if (debug) 
+  if (debug)
     Serial.println("StaticInit");
   Status = VL53L1_StaticInit(pMyDevice);
   if (Status != VL53L1_ERROR_NONE) return false;
@@ -95,9 +96,10 @@ bool Adafruit_VL53L1X::begin(uint8_t i2c_addr, TwoWire *theWire, bool debug) {
     Serial.print( F( "Device Name: ")  ); Serial.print( DeviceInfo.Name );
     Serial.print( F( ", Type: " ) ); Serial.print( DeviceInfo.Type );
     Serial.print( F( ", ID: " ) ); Serial.println( DeviceInfo.ProductId );
-    
-    Serial.print( F( "Rev Major: " ) ); Serial.print( DeviceInfo.ProductRevisionMajor );
-    Serial.print( F( ", Minor: " ) ); Serial.println( DeviceInfo.ProductRevisionMinor );
+
+    Serial.print( F( "Rev Major: " ) ); Serial.print(
+  DeviceInfo.ProductRevisionMajor ); Serial.print( F( ", Minor: " ) );
+  Serial.println( DeviceInfo.ProductRevisionMinor );
   }
 
   if (! SetDistanceMode(VL53L1_DISTANCEMODE_LONG)) return false;
@@ -108,7 +110,6 @@ bool Adafruit_VL53L1X::begin(uint8_t i2c_addr, TwoWire *theWire, bool debug) {
   return true;
 }
 
-
 uint16_t Adafruit_VL53L1X::sensorID(void) {
   uint16_t sensorID = 0;
   vl_status = VL53L1X_GetSensorId(&sensorID);
@@ -117,7 +118,7 @@ uint16_t Adafruit_VL53L1X::sensorID(void) {
 
 int16_t Adafruit_VL53L1X::distance(void) {
   uint16_t distance;
-  
+
   vl_status = VL53L1X_GetDistance(&distance);
   if (vl_status != VL53L1X_ERROR_NONE) {
     return -1;
@@ -172,7 +173,6 @@ uint16_t Adafruit_VL53L1X::getTimingBudget(void) {
   return 0;
 }
 
-
 /*
 
 }
@@ -182,8 +182,9 @@ boolean Adafruit_VL53L1X::SetDistanceMode(VL53L1_DistanceModes mode) {
   return (Status == VL53L1_ERROR_NONE);
 }
 
-boolean Adafruit_VL53L1X::GetRangingMeasurementData(VL53L1_RangingMeasurementData_t *ranging) {
-  Status = VL53L1_GetRangingMeasurementData(pMyDevice, ranging);
+boolean
+Adafruit_VL53L1X::GetRangingMeasurementData(VL53L1_RangingMeasurementData_t
+*ranging) { Status = VL53L1_GetRangingMeasurementData(pMyDevice, ranging);
   return (Status == VL53L1_ERROR_NONE);
 }
 */

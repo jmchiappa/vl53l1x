@@ -22,20 +22,20 @@
 #include "Wire.h"
 #include "vl53l1x_class.h"
 
-#define VL53L1X_I2C_ADDR  0x29 ///< Default sensor I2C address
+#define VL53L1X_I2C_ADDR 0x29 ///< Default sensor I2C address
 
 /**************************************************************************/
-/*! 
-    @brief  Class that stores state and functions for interacting with VL53L1X time-of-flight sensor chips
+/*!
+    @brief  Class that stores state and functions for interacting with VL53L1X
+   time-of-flight sensor chips
 */
 /**************************************************************************/
-class Adafruit_VL53L1X : public VL53L1X
-{
-  public:
-  Adafruit_VL53L1X(uint8_t shutdown_pin=-1, uint8_t irq_pin=-1);
+class Adafruit_VL53L1X : public VL53L1X {
+public:
+  Adafruit_VL53L1X(uint8_t shutdown_pin = -1, uint8_t irq_pin = -1);
 
-  bool begin(uint8_t i2c_addr = VL53L1X_I2C_ADDR, 
-             TwoWire *theWire=&Wire, bool debug = false );
+  bool begin(uint8_t i2c_addr = VL53L1X_I2C_ADDR, TwoWire *theWire = &Wire,
+             bool debug = false);
   uint16_t sensorID(void);
 
   bool startRanging(void);
@@ -60,7 +60,8 @@ class Adafruit_VL53L1X : public VL53L1X
   */
 
   VL53L1X_ERROR vl_status;
- private:
+
+private:
   int8_t _irq_pin, _shutdown_pin;
   /*
   VL53L1_Dev_t               MyDevice;
