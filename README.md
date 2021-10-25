@@ -1,10 +1,10 @@
-# Adafruit VL53L1X Library [![Build Status](https://travis-ci.com/adafruit/Adafruit_VL53L1X.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_VL53L1X)
+# Adafruit VL53L1X Library [![Build Status](https://travis-ci.com/adafruit/Adafruit_VL53L1X.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_VL53L1X) [![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_VL53L1X/html/index.html)
 
 <img src="https://cdn-shop.adafruit.com/970x728/3967-00.jpg" height="300"/>
 
 This is a library for the Adafruit VL53L1X time-of-flight breakout:
   * https://www.adafruit.com/products/3967
- 
+
 Check out the links above for our tutorials and wiring diagrams. This chip uses I2C to communicate
 
 Adafruit invests time and resources providing this open source code, please support Adafruit and open-source hardware by purchasing products from Adafruit!
@@ -19,7 +19,7 @@ This sensor uses I2C to communicate. And I2C instance is required to access to t
 
 The API provides simple distance measure, single swipe gesture detection,
 directional (left/right) swipe gesture detection and single tap gesture detection.
-  
+
 
 ## Note
 
@@ -34,8 +34,8 @@ the correct pin number for XSHUT and GPIO1 pins.
 
 ## Documentation
 
-You can find the source files at  
+You can find the source files at
 https://github.com/stm32duino/VL53L1X
 
-The VL53L1X datasheet is available at  
+The VL53L1X datasheet is available at
 https://www.st.com/content/st_com/en/products/imaging-and-photonics-solutions/proximity-sensors/vl53l1x.html
