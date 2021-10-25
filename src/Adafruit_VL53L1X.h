@@ -59,7 +59,7 @@ public:
   boolean GetRangingMeasurementData(VL53L1_RangingMeasurementData_t *ranging);
   */
 
-  VL53L1X_ERROR vl_status;
+  VL53L1X_ERROR vl_status; /**< VL53L1X API Error Status */
 
 private:
   int8_t _irq_pin, _shutdown_pin;
