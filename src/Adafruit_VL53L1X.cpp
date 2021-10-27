@@ -31,6 +31,13 @@
 
 #include "Adafruit_VL53L1X.h"
 
+/**************************************************************************/
+/*!
+    @brief  Create a new VL53L1X instance
+    @param  shutdown_pin Optional specify pin attached to shutdown
+    @param irq_pin Optional specify pin attached to interrupt
+*/
+/**************************************************************************/
 Adafruit_VL53L1X::Adafruit_VL53L1X(uint8_t shutdown_pin, uint8_t irq_pin)
     : VL53L1X(NULL, irq_pin) {
   _shutdown_pin = shutdown_pin;
@@ -42,9 +49,10 @@ Adafruit_VL53L1X::Adafruit_VL53L1X(uint8_t shutdown_pin, uint8_t irq_pin)
     @brief  Setups the I2C interface and hardware
     @param  i2c_addr Optional I2C address the sensor can be found on. Default is
    0x29
-    @param debug Optional debug flag. If true, debug information will print out
+    @param  theWire Optional The Wire bus object to use.
+    @param  debug Optional debug flag. If true, debug information will print out
    via Serial.print during setup. Defaults to false.
-    @returns True if device is set up, false on any failure
+    @returns  True if device is set up, false on any failure
 */
 /**************************************************************************/
 bool Adafruit_VL53L1X::begin(uint8_t i2c_addr, TwoWire *theWire, bool debug) {
@@ -110,12 +118,24 @@ bool Adafruit_VL53L1X::begin(uint8_t i2c_addr, TwoWire *theWire, bool debug) {
   return true;
 }
 
+/**************************************************************************/
+/*!
+    @brief  Get the sensor ID.
+    @returns The sensor ID.
+*/
+/**************************************************************************/
 uint16_t Adafruit_VL53L1X::sensorID(void) {
   uint16_t sensorID = 0;
   vl_status = VL53L1X_GetSensorId(&sensorID);
   return sensorID;
 }
 
+/**************************************************************************/
+/*!
+    @brief  Get the distance.
+    @returns The distance.
+*/
+/**************************************************************************/
 int16_t Adafruit_VL53L1X::distance(void) {
   uint16_t distance;
 
@@ -126,43 +146,93 @@ int16_t Adafruit_VL53L1X::distance(void) {
   return (int16_t)distance;
 }
 
+/**************************************************************************/
+/*!
+    @brief  Clear the interrupt.
+    @returns True if successful, otherwise false.
+*/
+/**************************************************************************/
 bool Adafruit_VL53L1X::clearInterrupt(void) {
   vl_status = VL53L1X_ClearInterrupt();
   return (vl_status == VL53L1X_ERROR_NONE);
 }
 
+/**************************************************************************/
+/*!
+    @brief  Set the interrupt polarity.
+    @param polarity The polarity to set as a boolean.
+    @returns True if successful, otherwise false.
+*/
+/**************************************************************************/
 bool Adafruit_VL53L1X::setIntPolarity(bool polarity) {
   vl_status = VL53L1X_SetInterruptPolarity(polarity);
   return (vl_status == VL53L1X_ERROR_NONE);
 }
 
+/**************************************************************************/
+/*!
+    @brief  Get the interrupt polarity.
+    @returns Polarity as a boolean.
+*/
+/**************************************************************************/
 bool Adafruit_VL53L1X::getIntPolarity(void) {
   uint8_t x = 0;
   vl_status = VL53L1X_GetInterruptPolarity(&x);
   return (bool)x;
 }
 
+/**************************************************************************/
+/*!
+    @brief  Start ranging operations.
+    @returns True if successful, otherwise false.
+*/
+/**************************************************************************/
 bool Adafruit_VL53L1X::startRanging(void) {
   vl_status = VL53L1X_StartRanging();
   return (vl_status == VL53L1X_ERROR_NONE);
 }
 
+/**************************************************************************/
+/*!
+    @brief  Stop ranging operations.
+    @returns True if successful, otherwise false.
+*/
+/**************************************************************************/
 bool Adafruit_VL53L1X::stopRanging(void) {
   vl_status = VL53L1X_StopRanging();
   return (vl_status == VL53L1X_ERROR_NONE);
 }
 
+/**************************************************************************/
+/*!
+    @brief  Check status of new data.
+    @returns True if new data available, otherwise false.
+*/
+/**************************************************************************/
 bool Adafruit_VL53L1X::dataReady(void) {
   uint8_t x = 0;
   vl_status = VL53L1X_CheckForDataReady(&x);
   return (bool)x;
 }
 
+/**************************************************************************/
+/*!
+    @brief  Set the timing budget.
+    @param ms Timing budget in milliseconds.
+    @returns True if successful, otherwise false.
+*/
+/**************************************************************************/
 bool Adafruit_VL53L1X::setTimingBudget(uint16_t ms) {
   vl_status = VL53L1X_SetTimingBudgetInMs(ms);
   return (vl_status == VL53L1X_ERROR_NONE);
 }
 
+/**************************************************************************/
+/*!
+    @brief  Get the timing budget.
+    @returns Timing budget in milliseconds.
+*/
+/**************************************************************************/
 uint16_t Adafruit_VL53L1X::getTimingBudget(void) {
   uint16_t ms = 0;
 
