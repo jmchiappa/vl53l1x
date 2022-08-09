@@ -138,6 +138,12 @@ uint16_t Adafruit_VL53L1X::sensorID(void) {
 /**************************************************************************/
 int16_t Adafruit_VL53L1X::distance(void) {
   uint16_t distance;
+  uint8_t rangeStatus;
+
+  vl_status = VL53L1X_GetRangeStatus(&rangeStatus);
+  if ((vl_status != VL53L1X_ERROR_NONE) || (rangeStatus != 0x0)) {
+    return -1;
+  }
 
   vl_status = VL53L1X_GetDistance(&distance);
   if (vl_status != VL53L1X_ERROR_NONE) {
