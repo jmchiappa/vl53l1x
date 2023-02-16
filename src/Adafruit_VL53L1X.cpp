@@ -39,7 +39,7 @@
 */
 /**************************************************************************/
 Adafruit_VL53L1X::Adafruit_VL53L1X(uint8_t shutdown_pin, uint8_t irq_pin)
-    : VL53L1X(NULL, irq_pin) {
+    : VL53L1X(NULL, shutdown_pin) {
   _shutdown_pin = shutdown_pin;
   _irq_pin = irq_pin;
 }
